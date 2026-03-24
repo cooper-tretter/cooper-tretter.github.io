@@ -102,15 +102,16 @@ class RedditScraper {
     async _fetchAll(query, maxResults, sortType, afterDate, beforeDate) {
         const allItems = [];
         const pageSize = 100;
-        let after = afterDate ? Math.floor(new Date(afterDate).getTime() / 1000) : null;
-        const before = beforeDate ? Math.floor(new Date(beforeDate).getTime() / 1000) : null;
+        const afterTs = afterDate ? Math.floor(new Date(afterDate).getTime() / 1000) : null;
+        // Track the sliding 'before' cursor for pagination
+        let beforeCursor = beforeDate ? Math.floor(new Date(beforeDate).getTime() / 1000) : null;
+
+        const endpoint = query.type === 'submission'
+            ? `${PULLPUSH_BASE}/search/submission/`
+            : `${PULLPUSH_BASE}/search/comment/`;
 
         while (allItems.length < maxResults) {
             if (this.abortController.signal.aborted) break;
-
-            const endpoint = query.type === 'submission'
-                ? `${PULLPUSH_BASE}/search/submission/`
-                : `${PULLPUSH_BASE}/search/comment/`;
 
             const params = new URLSearchParams({
                 q: query.term,
@@ -120,15 +121,14 @@ class RedditScraper {
                 sort_type: sortType
             });
 
-            if (after) params.set('after', String(after));
-            if (before) params.set('before', String(before));
+            if (afterTs) params.set('after', String(afterTs));
+            if (beforeCursor) params.set('before', String(beforeCursor));
 
             const response = await fetch(`${endpoint}?${params}`, {
                 signal: this.abortController.signal
             });
 
             if (response.status === 429) {
-                // Rate limited — wait and retry
                 await this._sleep(10000);
                 continue;
             }
@@ -146,14 +146,19 @@ class RedditScraper {
                 allItems.push(this._normalize(raw, query));
             }
 
-            // For pagination: get the oldest item's timestamp and search before it
+            // If we got fewer than a full page, there are no more results
             if (items.length < pageSize) break;
-            const oldest = items[items.length - 1];
-            const oldestTs = oldest.created_utc;
-            // Use 'before' param for next page (we sort desc)
-            params.set('before', String(oldestTs));
-            // Remove 'after' for pagination to work
-            if (after && oldestTs <= after) break;
+
+            // Move cursor to just before the oldest item in this batch
+            const oldestTs = items[items.length - 1].created_utc;
+
+            // Safety: if the oldest timestamp hasn't moved, we're stuck
+            if (beforeCursor && oldestTs >= beforeCursor) break;
+
+            // If we've paginated past the 'after' date, stop
+            if (afterTs && oldestTs <= afterTs) break;
+
+            beforeCursor = oldestTs;
 
             await this._sleep(1000);
         }
