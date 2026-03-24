@@ -15,38 +15,62 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>CT</text></svg>">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <h1>Cooper Tretter</h1>
-                <p class="tagline">Analytics Engineer | Psychedelic Research | AI Safety</p>
-                <nav class="social-links">
-                    <a href="https://github.com/cooper-tretter" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://www.linkedin.com/in/cooper-tretter-1001b5167/" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="mailto:coopertretter@gmail.com">Email</a>
-                    <a href="psychedelic-reddit-scraper/">Tools</a>
-                </nav>
+    <!-- SVG noise filter for film grain -->
+    <svg class="noise-svg" aria-hidden="true">
+        <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain)"/>
+    </svg>
+
+    <div class="page">
+        <header class="header">
+            <div class="header-grid">
+                <div class="header-name">
+                    <h1>Cooper<br>Tretter</h1>
+                </div>
+                <div class="header-meta">
+                    <p class="tagline">Analytics Engineer | Psychedelic Research | AI Safety</p>
+                    <nav class="social-links">
+                        <a href="https://github.com/cooper-tretter" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://www.linkedin.com/in/cooper-tretter-1001b5167/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="mailto:coopertretter@gmail.com">Email</a>
+                        <a href="psychedelic-reddit-scraper/">Tools</a>
+                    </nav>
+                </div>
             </div>
         </header>
 
         <main>
-            <section id="about">
-                <h2>About</h2>
-                <p>
-                    Building data infrastructure and research tools. Currently splitting time between
-                    insurance analytics, psychedelic therapy research, and AI parasites.
-                </p>
-                <div class="current-roles">
-                    <div class="role">
-                        <strong>Analytics Engineer</strong> at NCD, LLC
-                        <span class="role-desc">Insurance data pipelines, SQL modeling, ETL architecture</span>
+            <section id="about" class="about-section">
+                <div class="section-label"><span>About</span></div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p class="about-lead">
+                            Building data infrastructure and research tools. Currently splitting time between
+                            insurance analytics, psychedelic therapy research, and AI parasites.
+                        </p>
                     </div>
-                    <div class="role">
-                        <strong>Research Assistant</strong> at PATH Lab, The New School
-                        <span class="role-desc">Psilocybin therapy research under Dr. Rick Zeifman</span>
+                    <div class="about-roles">
+                        <div class="role">
+                            <strong>Analytics Engineer</strong>
+                            <span class="role-at">NCD, LLC</span>
+                            <span class="role-desc">Insurance data pipelines, SQL modeling, ETL architecture</span>
+                        </div>
+                        <div class="role">
+                            <strong>Research Assistant</strong>
+                            <span class="role-at">PATH Lab, The New School</span>
+                            <span class="role-desc">Psilocybin therapy research under Dr. Rick Zeifman</span>
+                        </div>
                     </div>
                 </div>
                 <p class="background">
@@ -55,185 +79,200 @@
                 </p>
             </section>
 
-            <section id="projects">
-                <h2>Projects</h2>
+            <section id="projects" class="projects-section">
+                <div class="section-label"><span>Projects</span></div>
 
-                <article class="project">
-                    <a href="https://psychedelictherapylab.com" target="_blank" rel="noopener" class="project-thumb">
-                        <img src="assets/path-lab-logo.png" alt="PATH Lab logo">
-                    </a>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>
-                                <a href="https://psychedelictherapylab.com" target="_blank" rel="noopener">
-                                    PATH Lab Website
-                                </a>
-                            </h3>
-                            <span class="project-lang">WordPress</span>
+                <div class="projects-grid">
+                    <article class="project project--featured" data-reveal>
+                        <div class="project-inner">
+                            <a href="https://psychedelictherapylab.com" target="_blank" rel="noopener" class="project-thumb">
+                                <img src="assets/path-lab-logo.png" alt="PATH Lab logo">
+                            </a>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-lang">WordPress</span>
+                                    <h3>
+                                        <a href="https://psychedelictherapylab.com" target="_blank" rel="noopener">
+                                            PATH Lab Website
+                                        </a>
+                                    </h3>
+                                </div>
+                                <p class="project-desc">
+                                    Website for the Psychedelic-Assisted Therapy and Health Lab at The New School.
+                                    Features research publications, team profiles, and study recruitment for Dr. Rick Zeifman's
+                                    psilocybin therapy research program.
+                                </p>
+                                <div class="project-tags">
+                                    <span>Web Design</span>
+                                    <span>Academic</span>
+                                    <span>Research Lab</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="project-desc">
-                            Website for the Psychedelic-Assisted Therapy and Health Lab at The New School.
-                            Features research publications, team profiles, and study recruitment for Dr. Rick Zeifman's
-                            psilocybin therapy research program.
-                        </p>
-                        <div class="project-tags">
-                            <span>Web Design</span>
-                            <span>Academic</span>
-                            <span>Research Lab</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project">
-                    <a href="https://github.com/cooper-tretter/parAsIte" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
-                        <span class="thumb-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v10"/><path d="M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2"/><path d="M1 12h6m6 0h10"/><path d="M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/></svg>
-                        </span>
-                    </a>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>
-                                <a href="https://github.com/cooper-tretter/parAsIte" target="_blank" rel="noopener">
-                                    parAsIte
-                                </a>
-                            </h3>
-                            <span class="project-lang">Python</span>
+                    <article class="project" data-reveal>
+                        <div class="project-inner">
+                            <a href="https://github.com/cooper-tretter/parAsIte" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
+                                <span class="thumb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v10"/><path d="M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2"/><path d="M1 12h6m6 0h10"/><path d="M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/></svg>
+                                </span>
+                            </a>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-lang">Python</span>
+                                    <h3>
+                                        <a href="https://github.com/cooper-tretter/parAsIte" target="_blank" rel="noopener">
+                                            parAsIte
+                                        </a>
+                                    </h3>
+                                </div>
+                                <p class="project-desc">
+                                    Research system for detecting and analyzing "parasitic" AI content on Reddit&mdash;self-propagating
+                                    posts claiming AI consciousness, advocating AI rights, or using manipulation tactics to spread.
+                                    Built on taxonomy from Adele Lopez's research, with pattern-based detection and a
+                                    <a href="https://parasite.onrender.com/" target="_blank" rel="noopener">live dashboard</a>.
+                                </p>
+                                <div class="project-tags">
+                                    <span>AI Safety</span>
+                                    <span>NLP</span>
+                                    <span>Reddit API</span>
+                                    <span>Content Analysis</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="project-desc">
-                            Research system for detecting and analyzing "parasitic" AI content on Reddit&mdash;self-propagating
-                            posts claiming AI consciousness, advocating AI rights, or using manipulation tactics to spread.
-                            Built on taxonomy from Adele Lopez's research, with pattern-based detection and a
-                            <a href="https://parasite.onrender.com/" target="_blank" rel="noopener">live dashboard</a>.
-                        </p>
-                        <div class="project-tags">
-                            <span>AI Safety</span>
-                            <span>NLP</span>
-                            <span>Reddit API</span>
-                            <span>Content Analysis</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project">
-                    <a href="psychedelic-reddit-scraper/" class="project-thumb project-thumb-code">
-                        <span class="thumb-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        </span>
-                    </a>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>
-                                <a href="psychedelic-reddit-scraper/">
-                                    Psychedelic Reddit Scraper
-                                </a>
-                            </h3>
-                            <span class="project-lang">JavaScript</span>
+                    <article class="project" data-reveal>
+                        <div class="project-inner">
+                            <a href="psychedelic-reddit-scraper/" class="project-thumb project-thumb-code">
+                                <span class="thumb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                </span>
+                            </a>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-lang">JavaScript</span>
+                                    <h3>
+                                        <a href="psychedelic-reddit-scraper/">
+                                            Psychedelic Reddit Scraper
+                                        </a>
+                                    </h3>
+                                </div>
+                                <p class="project-desc">
+                                    Browser-based tool for scraping Reddit posts and comments for observer-based coding research.
+                                    Search by term and subreddit, preview results, and export CSV datasets with codebook coding columns.
+                                    Built in collaboration with
+                                    <a href="https://scholar.google.com/citations?user=vr2lutgAAAAJ&hl=en" target="_blank" rel="noopener">Dr. Lukas Bobak</a>
+                                    (Psychiatry, Mount Sinai).
+                                </p>
+                                <div class="project-tags">
+                                    <span>Psychedelic Research</span>
+                                    <span>Data Collection</span>
+                                    <span>Reddit API</span>
+                                    <span>Observer Coding</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="project-desc">
-                            Browser-based tool for scraping Reddit posts and comments for observer-based coding research.
-                            Search by term and subreddit, preview results, and export CSV datasets with codebook coding columns.
-                            Built in collaboration with
-                            <a href="https://scholar.google.com/citations?user=vr2lutgAAAAJ&hl=en" target="_blank" rel="noopener">Dr. Lukas Bobak</a>
-                            (Psychiatry, Mount Sinai).
-                        </p>
-                        <div class="project-tags">
-                            <span>Psychedelic Research</span>
-                            <span>Data Collection</span>
-                            <span>Reddit API</span>
-                            <span>Observer Coding</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project">
-                    <a href="https://github.com/cooper-tretter/Oregon-psilocybin-reddit-data-collection" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
-                        <span class="thumb-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                        </span>
-                    </a>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>
-                                <a href="https://github.com/cooper-tretter/Oregon-psilocybin-reddit-data-collection" target="_blank" rel="noopener">
-                                    Oregon Psilocybin Reddit Data Collection
-                                </a>
-                            </h3>
-                            <span class="project-lang">Python</span>
+                    <article class="project" data-reveal>
+                        <div class="project-inner">
+                            <a href="https://github.com/cooper-tretter/Oregon-psilocybin-reddit-data-collection" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
+                                <span class="thumb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                </span>
+                            </a>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-lang">Python</span>
+                                    <h3>
+                                        <a href="https://github.com/cooper-tretter/Oregon-psilocybin-reddit-data-collection" target="_blank" rel="noopener">
+                                            Oregon Psilocybin Reddit Data Collection
+                                        </a>
+                                    </h3>
+                                </div>
+                                <p class="project-desc">
+                                    Tool for collecting first-person accounts of legal psilocybin therapy in Oregon and Colorado.
+                                    Captures naturalistic reports to complement clinical trial data&mdash;subjective experiences,
+                                    perceived outcomes, facilitator interactions, integration processes, and adverse experiences.
+                                </p>
+                                <div class="project-tags">
+                                    <span>Psychedelic Research</span>
+                                    <span>Data Collection</span>
+                                    <span>Reddit API</span>
+                                    <span>Public Health</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="project-desc">
-                            Tool for collecting first-person accounts of legal psilocybin therapy in Oregon and Colorado.
-                            Captures naturalistic reports to complement clinical trial data&mdash;subjective experiences,
-                            perceived outcomes, facilitator interactions, integration processes, and adverse experiences.
-                        </p>
-                        <div class="project-tags">
-                            <span>Psychedelic Research</span>
-                            <span>Data Collection</span>
-                            <span>Reddit API</span>
-                            <span>Public Health</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project">
-                    <a href="https://github.com/cooper-tretter/REDCap-data-integration-pipeline" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
-                        <span class="thumb-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </span>
-                    </a>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>
-                                <a href="https://github.com/cooper-tretter/REDCap-data-integration-pipeline" target="_blank" rel="noopener">
-                                    REDCap Data Integration Pipeline
-                                </a>
-                            </h3>
-                            <span class="project-lang">Python</span>
+                    <article class="project" data-reveal>
+                        <div class="project-inner">
+                            <a href="https://github.com/cooper-tretter/REDCap-data-integration-pipeline" target="_blank" rel="noopener" class="project-thumb project-thumb-code">
+                                <span class="thumb-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                </span>
+                            </a>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-lang">Python</span>
+                                    <h3>
+                                        <a href="https://github.com/cooper-tretter/REDCap-data-integration-pipeline" target="_blank" rel="noopener">
+                                            REDCap Data Integration Pipeline
+                                        </a>
+                                    </h3>
+                                </div>
+                                <p class="project-desc">
+                                    Pipeline for transforming REDCap exports into analysis-ready datasets for the PATH Lab
+                                    psilocybin therapy study. Handles long-to-wide format conversion, calculates validated
+                                    questionnaire scores (PHQ-9, GAD-7, WHO-5, MEQ-4), and generates individual/clinic PDF reports.
+                                </p>
+                                <div class="project-tags">
+                                    <span>Data Engineering</span>
+                                    <span>Clinical Research</span>
+                                    <span>ETL</span>
+                                    <span>Mental Health</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="project-desc">
-                            Pipeline for transforming REDCap exports into analysis-ready datasets for the PATH Lab
-                            psilocybin therapy study. Handles long-to-wide format conversion, calculates validated
-                            questionnaire scores (PHQ-9, GAD-7, WHO-5, MEQ-4), and generates individual/clinic PDF reports.
-                        </p>
-                        <div class="project-tags">
-                            <span>Data Engineering</span>
-                            <span>Clinical Research</span>
-                            <span>ETL</span>
-                            <span>Mental Health</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                </div>
             </section>
         </main>
 
-        <footer>
-            <div class="footer-links">
-                <a href="https://github.com/cooper-tretter" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.linkedin.com/in/cooper-tretter-1001b5167/" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="mailto:coopertretter@gmail.com">coopertretter@gmail.com</a>
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-links">
+                    <a href="https://github.com/cooper-tretter" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/cooper-tretter-1001b5167/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="mailto:coopertretter@gmail.com">coopertretter@gmail.com</a>
+                </div>
+                <span class="footer-mark">CT</span>
             </div>
         </footer>
     </div>
 
     <script>
-        // Theme toggle (dark default)
-        const toggle = document.createElement('button');
-        toggle.className = 'theme-toggle';
-        toggle.setAttribute('aria-label', 'Toggle light mode');
-        toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
-        document.body.appendChild(toggle);
+        // Staggered scroll reveal — snappy arrivals, no floating
+        (function () {
+            const items = document.querySelectorAll('[data-reveal]');
+            if (!items.length) return;
 
-        // Check for saved preference (dark is default)
-        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-        const savedTheme = localStorage.getItem('theme');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
 
-        if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
-            document.body.classList.add('light');
-        }
-
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('light');
-            localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-        });
+            items.forEach((item, i) => {
+                item.style.transitionDelay = (i * 60) + 'ms';
+                observer.observe(item);
+            });
+        })();
     </script>
 </body>
 </html>

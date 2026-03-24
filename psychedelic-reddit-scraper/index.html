@@ -4,18 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psychedelic Reddit Scraper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- SVG noise filter for film grain texture -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+        <defs>
+            <filter id="grain">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+                <feColorMatrix type="saturate" values="0"/>
+                <feBlend in="SourceGraphic" mode="multiply"/>
+            </filter>
+        </defs>
+    </svg>
+    <div class="grain-overlay" aria-hidden="true"></div>
+
     <div class="container">
         <header>
-            <a href="https://cooper-tretter.github.io" class="back-link">&larr; Back to homepage</a>
-            <h1>Psychedelic Reddit Scraper</h1>
+            <a href="https://cooper-tretter.github.io" class="back-link">&larr; BACK TO HOMEPAGE</a>
+            <h1>Psychedelic<br>Reddit Scraper</h1>
             <p class="subtitle">Search Reddit posts &amp; comments for observer-based coding datasets</p>
             <nav class="byline">
                 <span>Led by <a href="https://scholar.google.com/citations?user=vr2lutgAAAAJ&hl=en" target="_blank" rel="noopener">Dr. Lukas Bobak</a>, Psychiatry, Mount Sinai</span>
+                <span class="byline-sep">/</span>
                 <span>Created by Cooper Tretter</span>
+                <span class="byline-sep">/</span>
                 <a href="mailto:coopertretter@gmail.com">coopertretter@gmail.com</a>
+                <span class="byline-sep">/</span>
                 <a href="https://www.linkedin.com/in/cooper-tretter-1001b5167/" target="_blank" rel="noopener">LinkedIn</a>
             </nav>
         </header>
@@ -23,14 +41,14 @@
         <main>
             <!-- Preset Searches -->
             <section class="card" id="presets-section">
-                <h2>Quick Searches</h2>
+                <div class="section-label">QUICK SEARCHES</div>
                 <p class="help-text">Click a preset to load it, then hit "Run Search" to fetch results.</p>
                 <div class="presets-grid" id="presets-grid"></div>
             </section>
 
             <!-- Custom Search -->
             <section class="card" id="search-section">
-                <h2>Search Configuration</h2>
+                <div class="section-label">SEARCH CONFIGURATION</div>
                 <div class="search-form">
                     <div class="form-row">
                         <div class="form-group">
@@ -91,7 +109,7 @@
 
             <!-- Progress -->
             <section class="card" id="progress-section" style="display:none;">
-                <h2>Progress</h2>
+                <div class="section-label">PROGRESS</div>
                 <div class="progress-bar-container">
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
@@ -102,7 +120,10 @@
             <!-- Results -->
             <section class="card" id="results-section" style="display:none;">
                 <div class="results-header">
-                    <h2>Results <span id="result-count" class="badge">0</span></h2>
+                    <div class="results-title-row">
+                        <div class="section-label">RESULTS</div>
+                        <span id="result-count" class="badge">0</span>
+                    </div>
                     <div class="export-buttons">
                         <button id="export-csv" class="btn-primary">Export CSV</button>
                         <button id="export-csv-coding" class="btn-secondary">Export CSV (with coding columns)</button>
