@@ -541,20 +541,29 @@ tr:hover td {
     background: var(--surface-hover);
 }
 
-.col-text { min-width: 300px; }
+.col-text { min-width: 280px; }
 
 td.cell-text {
     max-width: 400px;
-    max-height: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     font-size: 0.78rem;
     line-height: 1.5;
     color: var(--text-muted);
+    white-space: normal;
+    overflow: hidden;
+    position: relative;
+    height: 4.5em; /* ~3 lines */
+}
+
+/* Fade-out instead of line-clamp to avoid table layout breakage */
+td.cell-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1.5em;
+    background: linear-gradient(transparent, var(--surface));
+    pointer-events: none;
 }
 
 td a {
