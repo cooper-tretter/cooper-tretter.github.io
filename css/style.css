@@ -100,7 +100,6 @@ button:focus-visible {
     color: var(--text-muted);
     margin-bottom: 1.25rem;
     line-height: 1.5;
-    white-space: nowrap;
 }
 
 .social-links {
@@ -479,12 +478,6 @@ button:focus-visible {
         flex-direction: column;
         gap: 1.5rem;
         align-items: flex-start;
-    }
-}
-
-@media (max-width: 480px) {
-    .tagline {
-        white-space: normal;
     }
 }
 
