@@ -482,6 +482,12 @@ button:focus-visible {
     }
 }
 
+@media (max-width: 480px) {
+    .tagline {
+        white-space: normal;
+    }
+}
+
 @media (max-width: 420px) {
     .header-name h1 {
         font-size: 2.5rem;
