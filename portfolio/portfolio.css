@@ -19,6 +19,9 @@ h1{font-family:georgia,'times new roman',times,serif;font-weight:700;font-size:c
 .body{font-family:georgia,'times new roman',times,serif;font-size:20px;line-height:1.55;max-width:600px;margin-top:34px}
 .body p{margin:0 0 24px}
 .body .rule{text-align:center;letter-spacing:.6em;margin:34px 0;color:#767676}
+.body .fig{margin:34px 0}
+.body .fig img{display:block;width:100%;height:auto}
+.body .fig figcaption{font-family:helvetica,arial,sans-serif;font-size:13px;line-height:1.4;color:#767676;margin-top:8px}
 .credit{font-size:14px;line-height:1.5;color:#363636;margin-top:30px;border-top:1px solid #dfdfdf;padding-top:14px}
 .btn{display:inline-block;margin-top:6px;padding:10px 18px;border:1px solid #121212;font-size:14px;font-weight:700;text-decoration:none}
 .btn:hover{background:#121212;color:#fff}
